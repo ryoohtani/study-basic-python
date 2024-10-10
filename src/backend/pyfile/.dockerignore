@@ -1,0 +1,11 @@
+# 含めたくないファイルを下記に記載すること
+# dockerファイルと同じ場所に作成
+
+# macOSの不要なファイル
+.DS_Store
+
+# Pythonバイトコード
+__pycache__/
+*.pyc
+
+hello.py

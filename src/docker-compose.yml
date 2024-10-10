@@ -1,0 +1,61 @@
+# 下記は保留
+# version: '3.9'
+# services:
+
+#   python3:
+#     build: ./backend/pyfile
+#     container_name: "stady-python"
+#     ports:
+#       - "8020:8020"
+#     volumes: # ボリュームのマウント、ホストとコンテナのディレクトリをリアルタイムで同期
+#       - .:/src
+#       - /src/backend/pyfile/venv  # venvはホストPCにマウントしない  
+#     tty: true
+
+
+version: '3.9'
+services:
+
+  # 開発環境用
+  python3-dev:
+    build:
+      context: ./backend/pyfile
+      target: development # 開発環境用
+    container_name: "stady-python-dev"
+    ports:
+      - 8020:8020
+    volumes: # ボリュームのマウント、ホストとコンテナのディレクトリをリアルタイムで同期
+      - .:/src
+      - /src/backend/pyfile/venv  # venvはホストPCにマウントしない  
+    tty: true
+    environment:
+      - ENV=development  # 開発モード変数
+  
+  # 本番環境用
+  python3-prod:
+    build:
+      context: ./backend/pyfile
+      target: production # 本番環境用
+    container_name: "stady-python-prod"
+    ports:
+      - 8030:8030
+    volumes: # ボリュームのマウント、ホストとコンテナのディレクトリをリアルタイムで同期
+      - .:/src
+      - /src/backend/pyfile/venv  # venvはホストPCにマウントしない  
+    tty: true
+    environment:
+      - ENV=production  # 本番モードの変数
+    command: ["python3", "/src/backend/pyfile/app1_answer.py"]  # 本番用のCMD
+
+  # postgresのdb環境
+  postgres:
+    image: postgres:17
+    container_name: "postgres-db"
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=pypost
+      - POSTGRES_DB=pydb
+    volumes:
+      - ./data:/var/lib/postgresql/data

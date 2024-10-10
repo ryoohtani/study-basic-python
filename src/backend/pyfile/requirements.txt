@@ -1,0 +1,22 @@
+# webライブラリーとフレームワーク
+flask
+fastapi
+uvicorn
+# バージョン指定の書き方？まだ試してない
+# fastapi==0.70.0
+# uvicorn==0.15.0
+
+# sqlの操作
+# posgre限定のライブラリ
+psycopg2
+psycopg2-binary
+# ormでsqlを操作するライブラリ(他のsqlにも使用可能)
+sqlalchemy
+
+# Pythonコードスタイルガイド
+pycodestyle
+flake8
+pylint
+
+# 実行コマンド(仮に直接実行するなら)
+# pip install -r requirements.txt
