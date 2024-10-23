@@ -17,6 +17,3 @@ sqlalchemy
 pycodestyle
 flake8
 pylint
-
-# 実行コマンド(仮に直接実行するなら)
-# pip install -r requirements.txt

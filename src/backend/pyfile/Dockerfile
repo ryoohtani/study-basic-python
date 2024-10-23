@@ -13,11 +13,16 @@ EXPOSE 8020
 RUN apt update && apt install -y vim less sudo tree curl
 # postgresを使用するために必要なパッケージ
 RUN apt update && apt install -y libpq-dev
+# x11-appsのインストール(tkinterを使う場合必要又はドッカーからホストに対して通信を行う場合)
+RUN apt install -y x11-apps
 # Pythonのインストール
 RUN apt install -y python3.12
 # pipのインストール
 RUN apt install -y --upgrade python3-pip
+# python3-tkのインストール(tkinterを使う場合必要)
+RUN apt install -y python3-tk
 # パッケージインストールのためにvenvの仮想環境を準備
+# 下記も3.13にするとエラーになる。推測だがまだPython3.13が新しくてvenvが3.13が安定していなくてDLできないかも
 RUN apt update && apt install -y python3.12-venv
 # dockerファイルと同じ階層にrequirements.txt配置すること
 COPY ./requirements.txt /src/backend/pyfile/
@@ -45,3 +50,5 @@ CMD ["python3", "/src/backend/pyfile/app1_answer.py"]
     
 # 下記保留 内容わすれた
 # RUN pip install --upgrade setuptools
+# コンテナからホストpcつまりmacと通信ができる。compose側で定義しているから不要。compuseを使用しないなら必要。DISPLAY変数にhost.docker.internal:0.0の値を代入している(tkinterを使う場合必要又はドッカーからホストに対して通信を行う場合)
+#ENV DISPLAY host.docker.internal:0.0

@@ -1,18 +1,3 @@
-# 下記は保留
-# version: '3.9'
-# services:
-
-#   python3:
-#     build: ./backend/pyfile
-#     container_name: "stady-python"
-#     ports:
-#       - "8020:8020"
-#     volumes: # ボリュームのマウント、ホストとコンテナのディレクトリをリアルタイムで同期
-#       - .:/src
-#       - /src/backend/pyfile/venv  # venvはホストPCにマウントしない  
-#     tty: true
-
-
 version: '3.9'
 services:
 
@@ -26,10 +11,17 @@ services:
       - 8020:8020
     volumes: # ボリュームのマウント、ホストとコンテナのディレクトリをリアルタイムで同期
       - .:/src
-      - /src/backend/pyfile/venv  # venvはホストPCにマウントしない  
+      - /src/backend/pyfile/venv  # venvはホストPCにマウントしない 
+      - /tmp/.X11-unix:/tmp/.X11-unix 
     tty: true
     environment:
       - ENV=development  # 開発モード変数
+      - DISPLAY=host.docker.internal:0.0 #(tkinterを使う場合必要又はドッカーからホストに対して通信を行う場合)
+      # コンテナからホストpcつまりmacと通信ができる。番号はサーバーが稼働している数が増えれば＋１されて数が増える
+      # 今回はサーバーはx11のサーバーは１台だから0とする
+      # 0.0 こちらの意味、左辺がサーバー、右辺がスクリーンを指定している。複数画面のセットアップなら増加して0.1などになる
+      # 省略形もある。それが下記(現状は省略しないで書く)
+       #- DISPLAY=host.docker.internal:0      
   
   # 本番環境用
   python3-prod:
@@ -41,11 +33,11 @@ services:
       - 8030:8030
     volumes: # ボリュームのマウント、ホストとコンテナのディレクトリをリアルタイムで同期
       - .:/src
-      - /src/backend/pyfile/venv  # venvはホストPCにマウントしない  
+      #- /src/backend/pyfile/venv  # venvはホストPCにマウントしない  ⚫️不要かもしれないけど一応残しておく⚫️
     tty: true
     environment:
       - ENV=production  # 本番モードの変数
-    command: ["python3", "/src/backend/pyfile/app1_answer.py"]  # 本番用のCMD
+    command: ["python3", "/src/backend/pyfile/basic/app1_answer.py"]  # 本番用のCMD
 
   # postgresのdb環境
   postgres:

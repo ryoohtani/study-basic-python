@@ -27,7 +27,7 @@ docker exec -it stady-python-dev bash
 docker exec -it stady-python-prod bash
 docker exec -it postgres-db psql -U admin -d pydb
 ```
-
+---
 *Pythonのコマンド*
 
 * Pythonのバージョン確認
@@ -41,6 +41,10 @@ pip3 --version
 * pipでインストールしたものを確認するコマンド
 ```
 pip3 list
+```
+* tkinterの確認コマンド
+```
+python -m tkinter
 ```
 * flaskのバージョン確認コマンド
 ```
@@ -64,8 +68,8 @@ source /src/backend/pyfile/venv/bin/activate
 deactivate
 ```
 ---
-
 **Pythonコードスタイルガイド**
+
 * pycodestyle
 ```
 pycodestyle --version
@@ -81,9 +85,9 @@ flake8 対象ファイル
 pylint --version
 pylint 対象ファイル
 ```
-
 ---
 **postgressqlコマンド**
+
 * テーブルの確認
 ```
 SELECT * FROM test_table;
@@ -97,48 +101,73 @@ DROP TABLE test_table;
 \dt
 ```
 ---
+**tkinterの取り扱う場合の準備**
+
+* XQuartzのダウンロード
+```
+https://www.xquartz.org/
+```
+* アプリの設定
+```
+設定 → セキュリティタブ → ネットワーク・クライアントからの接続を許可にチェック
+```
+* アプリの起動(ホストpcのターミナルで実行)
+```
+open -a XQuartz
+```
+* ローカルホストをxサーバーに接続許可するコマンド(ホストpcのターミナルで実行)
+```
+xhost + 127.0.0.1
+又は
+xhost + localhost
+意味は同じだが推奨は最小のやつ
+```
+* ローカルホストをxサーバーに接続解除するコマンド(ホストpcのターミナルで実行)
+```
+xhost - 127.0.0.1
+又は
+xhost - localhost
+意味は同じだが推奨は最初のやつ
+```
+* 接続状況確認コマンド(ホストpcのターミナルで実行)
+```
+xhost
+```
+---
 *gitコマンド*
 
 * ローカルリポジトリの新規作成
 ```
 git init
 ```
-
 * ファイルの追跡(変更分全て)
 ```
 git add .
 ```
-
 * コミット
 ```
 git commit
 ```
-
 * ローカルリポジトリにリモートリポジトリのURLを貼り付ける
 ```
 git remote add pysyntax URLを貼り付ける
 ```
-
 * リモートリポジトリへプッシュ
 ```
 git push -u pysyntax main
 ```
-
 * リモートリポジトリからローカルに反映
 ```
 git fetch
 ```
-
 * ブランチの移動
 ```
 git checkout main
 ```
-
 * マージ
 ```
 git merge pysyntax/main
 ```
-
 ---
 * 参考資料
 ```
@@ -153,7 +182,6 @@ https://engineeeer.com/no-more-pycache/
 treeなし
 https://qiita.com/yone098@github/items/bba8a42de6b06e40983b
 ```
-
 ```
 docker sql python venv環境構築
 https://qiita.com/toffe_hy/items/8c62f2bc7b14f1ce2ae0
