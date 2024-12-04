@@ -2,3 +2,5 @@
 https://qiita.com/omossan7182t/items/ccc95de88a079596bf7a
 
 https://qiita.com/karakuri-t910/items/6739986a8717eedd083c
+
+https://python-work.com/tkinter-canvas/
