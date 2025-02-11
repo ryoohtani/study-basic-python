@@ -46,6 +46,12 @@ pip3 list
 ```
 python -m tkinter
 ```
+* Djangoのバージョン確認コマンド
+```
+pip list | grep Django
+python -m django --version
+pip show django
+```
 * flaskのバージョン確認コマンド
 ```
 flask --version
@@ -85,6 +91,30 @@ flake8 対象ファイル
 pylint --version
 pylint 対象ファイル
 ```
+---
+**djangoの環境構築**
+
+* プロジェクトフォルダの作成
+```
+必要なプロジェクトの素材を配置される => プロジェクトの設定や管理用のファイルが生成されるフォルダ
+django-admin startproject ここにフォルダ名を記載
+```
+
+* アプリケーションフォルダの作成(機能単位のモジュールを作る)
+```
+アプリケーションという 独立した機能の単位をごとに作成するため必要
+今回はCRUDシステムの作成
+⚫️プロジェクトフォルダに移動して、アプリケーションフォルダ作成コマンドを行う。必ずmanage.pyのあるところで行う
+python manage.py startapp ここにフォルダ名を記載
+```
+
+* docker環境からサーバーにアクセスコマンド
+```
+0.0.0.0:8020 こちらは、docker環境のportを指定している
+venvの環境に入り、manage.pyあるところに移動
+python manage.py runserver 0.0.0.0:8020
+```
+
 ---
 **postgressqlコマンド**
 

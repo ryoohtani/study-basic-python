@@ -1,4 +1,5 @@
 # webライブラリーとフレームワーク
+Django
 flask
 fastapi
 uvicorn
