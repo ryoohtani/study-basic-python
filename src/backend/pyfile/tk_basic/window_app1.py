@@ -30,11 +30,12 @@ def main():
     if scene == "ゲーム":
         player_x = player_x + 40
 
-        if player_x > 960: player_x = 0
+        if player_x > 960: 
+            player_x = 0
 
         player_a = player_a + 1
 
-        cvs.create_image(player_x, 400, image = main_player[main_player%4])
+        cvs.create_image(player_x, 400, image = main_player[main_player % 4])
     
     root.after(100, main)
 
@@ -53,18 +54,16 @@ root.bind("<Key>", pkey)
 
 cvs.pack()
 
-ilst = tkinter.PhotoImage(file = "/src/backend/pyfile/tk_basic/img/illust.png")
+ilst = tkinter.PhotoImage(file = "img/illust.png")
 
-bg = tkinter.PhotoImage(file = "/src/backend/pyfile/tk_basic/img/bg.png")
+bg = tkinter.PhotoImage(file = "img/bg.png")
 
-main_player = [tkinter.PhotoImage(file = "/src/backend/pyfile/tk_basic/img/ninja0.png"),
-               tkinter.PhotoImage(file = "/src/backend/pyfile/tk_basic/img/ninja1.png"),
-               tkinter.PhotoImage(file = "/src/backend/pyfile/tk_basic/img/ninja2.png"),
-               tkinter.PhotoImage(file = "/src/backend/pyfile/tk_basic/img/ninja3.png")]
+main_player = [tkinter.PhotoImage(file = "img/ninja0.png"),
+               tkinter.PhotoImage(file = "img/ninja1.png"),
+               tkinter.PhotoImage(file = "img/ninja2.png"),
+               tkinter.PhotoImage(file = "img/ninja3.png")]
 
 main()
 
 root.mainloop()
-
-
 # プログラムにはバグがある。その内容をgptを使わないで考えること

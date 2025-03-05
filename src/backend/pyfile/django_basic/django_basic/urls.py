@@ -21,4 +21,5 @@ from crud import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Topview.as_view(), name='hello'), 
+    path('crud/', views.ProductListVeiw.as_view(), name='list'),
 ]
