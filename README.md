@@ -73,7 +73,7 @@ source /src/backend/pyfile/venv/bin/activate
 ```
 deactivate
 ```
----
+---＿
 **Pythonコードスタイルガイド**
 
 * pycodestyle
