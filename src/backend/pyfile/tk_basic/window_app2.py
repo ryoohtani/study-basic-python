@@ -1,4 +1,5 @@
 import tkinter
+import random
 
 WIDTH = 960
 HEIGHT = 720
@@ -39,8 +40,10 @@ def click(e):
         ball_x = int(WIDTH / 2)
         ball_y = int(HEIGHT / 5)
         # ボールの速さを初期化
-        ball_vx = 10
-        ball_vy = 10
+        #ball_vx = 10
+        #ball_vy = 10
+        ball_vx = random.randint(10, 30)
+        ball_vy = random.randint(10, 30)
         # スコアを初期化
         scene = "ゲーム"
         score = 0
@@ -96,7 +99,8 @@ def main():
         # バーの長さが左60、右60
         # -20はバーの上側座標y座標だから。逆に-20より大きい場合は、バーの下側にあたっているためすり抜ける
         if -60 < dx and dx < 60 and -20 < dy and dy < 0:
-            ball_vy = -10
+            #ball_vy = -10
+            ball_vy = random.randint(-15, -1)
             # スコアの加算処理
             score = score + 100
             if hisco < score:
@@ -106,7 +110,8 @@ def main():
     if scene == "ゲームオーバー":
         # なぜ関数を呼び出せているのか不明########
         text(WIDTH / 2, HEIGHT / 2, "GAME OVER", 40, "red")
-   
+    # 引数が333ミリ秒で、1秒間に30回main関数を呼び出す。これは1000 % 33 = 30FPS
+    # 16にすると60FPSになる
     root.after(33, main)
 
 root = tkinter.Tk()
