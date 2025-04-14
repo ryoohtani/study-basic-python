@@ -65,6 +65,7 @@ def main():
     cvs.create_image(WIDTH / 2, HEIGHT / 2, image = bg)
     # ボールの実体(バーの内容と同じ)
     cvs.create_oval(ball_x - 10 , ball_y - 10, ball_x + 10, ball_y + 10, fill = "red")
+    cvs.create_image(ball_x, ball_y, image=img)
     # 各変数に加算や減算を行い。座標にピンを打ち。その４点を結ぶことで四角形を描画する
     cvs.create_rectangle(bar_x - 50, bar_y - 5, bar_x + 50, bar_y + 5, fill = "blue")
     # ヒットチェックの範囲を表示
@@ -115,9 +116,13 @@ def main():
     root.after(33, main)
 
 root = tkinter.Tk()
+root.geometry(f"{WIDTH}x{HEIGHT}")
+root.title("東堂葵のスカッシュゲーム")
+root.resizable(False, False)
 cvs = tkinter.Canvas(width = WIDTH, height = HEIGHT)
 cvs.pack()
 bg = tkinter.PhotoImage(file = "img/bg2.png")
+img = tkinter.PhotoImage(file = "img/mouse_point.png")
 root.bind("<Motion>", move)
 root.bind("<Button>", click)
 main()
