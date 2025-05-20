@@ -37,7 +37,7 @@ services:
     tty: true
     environment:
       - ENV=production  # 本番モードの変数
-    command: ["python3", "/src/backend/pyfile/basic/app1_answer.py"]  # 本番用のCMD
+    command: ["python3", "/src/backend/pyfile/prod_kidou/kidou.py"]  # 本番用のCMD
 
   # postgresのdb環境
   postgres:

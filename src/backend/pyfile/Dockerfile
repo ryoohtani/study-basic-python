@@ -53,7 +53,7 @@ ENV PYTHONUNBUFFERED=1
 # 本番環境用
 FROM base AS production
 # 必要なら下記を行う参考用
-CMD ["python3", "/src/backend/pyfile/app1_answer.py"]
+CMD ["python3", "/src/backend/pyfile/prod_kidou/kidou.py"]
 
 # 下記保留 内容わすれた
 # RUN pip install --upgrade setuptools

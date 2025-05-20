@@ -64,7 +64,7 @@ def main():
     # キャンバスに画像を描画(サイズとbgには画像のパスを指定している)
     cvs.create_image(WIDTH / 2, HEIGHT / 2, image = bg)
     # ボールの実体(バーの内容と同じ)
-    cvs.create_oval(ball_x - 10 , ball_y - 10, ball_x + 10, ball_y + 10, fill = "red")
+    #cvs.create_oval(ball_x - 10 , ball_y - 10, ball_x + 10, ball_y + 10, fill = "red")
     cvs.create_image(ball_x, ball_y, image=img)
     # 各変数に加算や減算を行い。座標にピンを打ち。その４点を結ぶことで四角形を描画する
     cvs.create_rectangle(bar_x - 50, bar_y - 5, bar_x + 50, bar_y + 5, fill = "blue")
@@ -84,7 +84,7 @@ def main():
         ball_x = ball_x + ball_vx
         ball_y = ball_y + ball_vy
         # ボールが画面の左右の端（10ピクセル以内）で跳ね返ります
-        if ball_x < 10 or WIDTH - 10 < ball_x:
+        if ball_x < 10 or WIDTH - 10 < ball_x: 
             # 符号の反転させて代入(+なら-、-なら+)
             ball_vx = -ball_vx
         if ball_y < 10:
@@ -109,7 +109,6 @@ def main():
         
     # ゲームオーバーの処理
     if scene == "ゲームオーバー":
-        # なぜ関数を呼び出せているのか不明########
         text(WIDTH / 2, HEIGHT / 2, "GAME OVER", 40, "red")
     # 引数が333ミリ秒で、1秒間に30回main関数を呼び出す。これは1000 % 33 = 30FPS
     # 16にすると60FPSになる
