@@ -1,0 +1,1 @@
+score_path1 = '../files/score.txt'
