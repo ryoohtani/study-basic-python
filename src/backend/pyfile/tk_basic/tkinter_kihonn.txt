@@ -4,3 +4,21 @@ https://qiita.com/omossan7182t/items/ccc95de88a079596bf7a
 https://qiita.com/karakuri-t910/items/6739986a8717eedd083c
 
 https://python-work.com/tkinter-canvas/
+
+tkinterで躓いたところ
+https://qiita.com/suipy/items/71b00e8a5a180818bbee
+
+テキストボックスの参考
+https://office54.net/python/tkinter/textbox-get-insert
+
+mainloopについて
+https://daeudaeu.com/mainloop/
+
+tkinterイベント処理について
+https://daeudaeu.com/tkinter_event/
+
+tkinter遅延実行
+https://daeudaeu.com/tkinter_after/
+
+tkinterマルチスレッド
+https://daeudaeu.com/tkinter_mulithread/

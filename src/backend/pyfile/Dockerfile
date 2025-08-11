@@ -18,7 +18,8 @@ RUN apt update && apt install -y \
     tree \
     curl
 # 日本語化のパッケージ
-# RUN apt install -y fonts-takao-gothic
+RUN apt install -y fonts-takao-gothic
+RUN apt update && apt install -y fonts-ipafont-gothic
 RUN apt update && apt install -y fonts-noto-cjk
 # PostgreSQLを使用するための開発パッケージをインストール
 RUN apt update && apt install -y libpq-dev

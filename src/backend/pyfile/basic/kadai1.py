@@ -6,9 +6,11 @@
 # CLIであるシェルのアプリケーションとして作成すること
 
 import random
+from pass_env import score_path1
+from text_read import score_list
 # スコア変数の定義
 score: int = 3
-high_score: int = 2
+# high_score: int = 2
 
 def clear_func():
     # インデックス用変数定義
@@ -25,6 +27,14 @@ def clear_func():
             double_list[y][x] =  0
     
     return double_list
+
+def score_func():
+    # score: int = 3
+    high_score: int = 0
+    high_score = score_list[0]
+    print(score_list)
+
+    return high_score
 
 def enemy_func(double_list: list):
     # 敵のインデックスをランダムで決定０から２まで
@@ -75,10 +85,13 @@ def player_func(get_xy_text: str):
             return i1       
             
 def main():
-    global score, high_score
+    # global score, high_score
+
+
     game_flag: bool = True
     while game_flag == True:
         double_list = clear_func()
+        high_score = score_func()
         print('現在のハイスコア' + str(high_score) + 'です')
         print('$$$$$ ゲーム開始 $$$$$')
         enemy_x, enemy_y, double_list = enemy_func(double_list)
